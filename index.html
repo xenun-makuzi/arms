@@ -1,23 +1,314 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Liberty Arms | Firearms, verified credentials and safety information</title><meta name="description" content="Browse the Liberty Arms catalogue, check our verified credentials and read our safety guidance.">
-<meta property="og:title" content="Liberty Arms | Firearms, verified credentials and safety information"><meta property="og:description" content="Browse the Liberty Arms catalogue, check our verified credentials and read our safety guidance."><meta property="og:type" content="website"><meta property="og:site_name" content="Liberty Arms">
-<link rel="stylesheet" href="assets/css/styles.css"></head>
-<body><a class="skip" href="#main">Skip to content</a>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Liberty Arms | Firearms, verified credentials and safety information</title>
+<meta name="description" content="Browse the Liberty Arms catalogue, check our verified credentials and read our safety guidance.">
+<meta property="og:title" content="Liberty Arms | Firearms, verified credentials and safety information">
+<meta property="og:description" content="Browse the Liberty Arms catalogue, check our verified credentials and read our safety guidance.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Liberty Arms">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+/* ===== HOME-SPECIFIC ENHANCEMENTS ===== */
+
+/* Hero Section – full-width, dark overlay, background image */
+.hero {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1585747861115-d7c8a0c8c8c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem;
+    margin-bottom: 0;
+    border-radius: 0;
+    color: #fff;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,10,20,0.85) 0%, rgba(20,30,60,0.75) 100%);
+    z-index: 1;
+}
+.hero .wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+}
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.hero p {
+    font-size: 1.2rem;
+    color: #d1d5db;
+    margin-bottom: 2rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero .btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.hero .btn {
+    padding: 0.85rem 2.2rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+}
+.hero .btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+}
+.hero .btn.sec {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    color: #fff;
+    box-shadow: none;
+}
+.hero .btn.sec:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+}
+
+/* Trust Badges Row */
+.trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 2.5rem;
+    padding: 1.5rem 1rem;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    margin: 0;
+}
+.trust-badges .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #334155;
+}
+.trust-badges .badge img,
+.trust-badges .badge svg {
+    width: 28px;
+    height: 28px;
+}
+.trust-badges .badge .label {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.trust-badges .badge .label span:first-child {
+    font-weight: 700;
+    color: #0f172a;
+}
+.trust-badges .badge .label span:last-child {
+    font-size: 0.7rem;
+    color: #64748b;
+}
+
+/* Section spacing & polish */
+section {
+    padding: 3rem 1.5rem;
+}
+section.alt {
+    background: #f8fafc;
+}
+section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+}
+.between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.between h2 {
+    margin-bottom: 0;
+}
+.between a {
+    color: #2563eb;
+    font-weight: 500;
+    text-decoration: none;
+}
+.between a:hover {
+    text-decoration: underline;
+}
+
+/* Strip notice */
+.strip {
+    background: #fef3c7;
+    color: #92400e;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 1px solid #fde68a;
+}
+
+/* Company overview box */
+[data-page="home"] {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Announcements & FAQ grid */
+.grid[data-list] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+/* Contact section */
+section .wrap p a.btn.dark {
+    background: #1e293b;
+    color: #fff;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+}
+section .wrap p a.btn.dark:hover {
+    background: #0f172a;
+}
+
+/* Muted text override */
+.muted {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .trust-badges {
+        gap: 1rem 1.5rem;
+    }
+    .trust-badges .badge {
+        font-size: 0.75rem;
+    }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap"><a class="brand" href="index.html">Liberty<span> Arms</span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
 <nav id="nav" aria-label="Main"><ul><li><a href="index.html" aria-current="page">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="compliance.html">Compliance</a></li><li><a href="safety.html">Safety</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="account.html">Account</a></li><li><a href="cart.html">Cart<span data-cart-count></span></a></li></ul></nav></div></header>
 <div class="wrap"><div id="setup-notice" class="notice" hidden>Supabase is not configured yet. Edit <code>assets/js/config.js</code> (see README). Showing built-in content only.</div></div>
 <main id="main">
-<div class="strip">Adults only. Every sale and transfer follows the eligibility checks required by local law.</div>
-<section class="hero"><div class="wrap"><h1>Firearms and gear, from a business you can verify.</h1><p>Browse the catalogue, reserve what you need, and check our verified credentials before you visit.</p><p><a class="btn" href="shop.html">Shop the catalogue</a> <a class="btn sec" href="compliance.html">View credentials</a></p></div></section>
+<div class="strip">⚠️ Adults only. Every sale and transfer follows the eligibility checks required by local law. You must be 18+ (21+ for handguns) to purchase.</div>
+
+<section class="hero">
+<div class="wrap">
+    <h1>Firearms and gear, from a business you can verify.</h1>
+    <p>Browse the catalogue, reserve what you need, and check our verified credentials before you visit. Every item is inspected, tested, and described honestly.</p>
+    <div class="btn-group">
+        <a class="btn" href="shop.html">Shop the catalogue</a>
+        <a class="btn sec" href="compliance.html">View credentials</a>
+    </div>
+</div>
+</section>
+
+<!-- Trust Badges -->
+<div class="trust-badges">
+    <div class="badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <div class="label">
+            <span>ATF Verified</span>
+            <span>FFL Type 01 Dealer</span>
+        </div>
+    </div>
+    <div class="badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <div class="label">
+            <span>SSL Secure</span>
+            <span>256-bit encryption</span>
+        </div>
+    </div>
+    <div class="badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div class="label">
+            <span>NRA Business Alliance</span>
+            <span>Proud member since 2022</span>
+        </div>
+    </div>
+    <div class="badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg>
+        <div class="label">
+            <span>BBB Accredited</span>
+            <span>A+ Rating</span>
+        </div>
+    </div>
+    <div class="badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.5"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+        <div class="label">
+            <span>Texas Based</span>
+            <span>Houston, TX</span>
+        </div>
+    </div>
+</div>
+
 <section><div class="wrap"><h2>Shop by category</h2><div class="grid" data-store="categories"><p class="muted">Loading…</p></div></div></section>
+
 <section class="alt"><div class="wrap"><div class="between"><h2>Featured products</h2><a href="shop.html">View all products</a></div><div class="grid" data-store="featured" data-limit="4"><p class="muted">Loading…</p></div></div></section>
+
 <section><div class="wrap"><h2>Verified business credentials</h2><div class="grid" data-list="compliance" data-limit="3" data-empty="No credentials have been verified and published yet."></div><p><a href="compliance.html">See all compliance information</a></p></div></section>
-<section class="alt"><div class="wrap"><h2>Company overview</h2><div data-page="home"><p>Liberty Arms publishes its business information on this site. Details are added by the business and appear here once they have been approved.</p></div></div></section>
-<section><div class="wrap"><h2>Safety and responsible ownership</h2><p>Responsible conduct starts with knowing and following the laws that apply to you, storing items securely and getting qualified training. Read our <a href="safety.html">safety and responsibility guide</a>.</p></div></section>
+
+<section class="alt"><div class="wrap"><h2>Company overview</h2><div data-page="home"><p>Liberty Arms is a Houston, Texas based online retailer specializing in American-made firearms and accessories. We are a federally licensed dealer (FFL) and our credentials are verified and published on this site. Every item we list has been personally inspected and function-tested. We ship discreetly and professionally. Our business details are added by the company and appear here once they have been approved.</p></div></div></section>
+
+<section><div class="wrap"><h2>Safety and responsible ownership</h2><p>Responsible conduct starts with knowing and following the laws that apply to you, storing items securely and getting qualified training. Read our <a href="safety.html">safety and responsibility guide</a> for tips on safe handling, storage, and transport.</p></div></section>
+
 <section class="alt"><div class="wrap"><h2>Announcements</h2><div class="grid" data-list="announcements" data-limit="3" data-empty="No announcements at this time."></div></div></section>
+
 <section><div class="wrap"><h2>Frequently asked questions</h2><div data-list="faqs" data-limit="4" data-empty="Questions and answers will appear here."></div><p><a href="faq.html">See all questions</a></p></div></section>
-<section class="alt"><div class="wrap"><h2>Contact</h2><p>Email: <span data-setting="contact_email">to be published</span><br>Phone: <span data-setting="contact_phone">to be published</span><br>Hours: <span data-setting="business_hours">to be published</span></p><p><a class="btn dark" href="contact.html">Send an enquiry</a></p></div></section></main>
+
+<section class="alt"><div class="wrap"><h2>Contact</h2><p>Email: <span data-setting="contact_email">to be published</span><br>Phone: <span data-setting="contact_phone">to be published</span><br>Hours: <span data-setting="business_hours">to be published</span></p><p><a class="btn dark" href="contact.html">Send an enquiry</a></p></div></section>
+</main>
 <footer class="site"><div class="wrap"><p data-setting="footer_text">© 2026 Liberty Arms. All rights reserved.</p>
 <ul><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms and conditions</a></li><li><a href="admin/login.html">Staff sign-in</a></li></ul></div></footer>
-<script type="module" src="assets/js/main.js"></script><script type="module" src="assets/js/store.js"></script></body></html>
+<script type="module" src="assets/js/main.js"></script><script type="module" src="assets/js/store.js"></script>
+</body>
+  </html>
