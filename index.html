@@ -5,302 +5,477 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Liberty Arms | Official Store</title>
-<meta name="description" content="Explore Liberty Arms, our company information, product catalogue and customer support.">
+<title>Liberty Arms | Official Website</title>
+<meta name="description" content="Liberty Arms company information, customer support, compliance information and responsible ownership resources.">
 
-<meta property="og:title" content="Liberty Arms">
-<meta property="og:description" content="Discover the Liberty Arms online store and company information.">
-<meta property="og:type" content="website">
-
-<link rel="stylesheet" href="assets/css/styles.css">
+<meta name="theme-color" content="#10294b">
 
 <style>
 :root {
-  --black: #101010;
-  --dark: #171717;
-  --panel: #202020;
-  --gold: #c6a15b;
-  --white: #f7f5f0;
-  --muted: #a5a39e;
-  --line: rgba(255,255,255,.10);
+  --navy: #10294b;
+  --navy-dark: #091a30;
+  --blue: #2463ad;
+  --blue-light: #eaf2fc;
+  --white: #ffffff;
+  --background: #f4f7fb;
+  --text: #1d2939;
+  --muted: #66758a;
+  --border: #e1e7ef;
+  --silver: #dce5ef;
+  --shadow: 0 8px 30px rgba(16,41,75,.07);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--black);
-  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
 }
 
+a {
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(1180px, 92%);
+  margin: auto;
+}
+
+/* ACCESSIBILITY */
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: white;
+  color: black;
+  padding: 12px;
+  z-index: 1000;
+}
+
+.skip:focus {
+  left: 10px;
+}
+
+/* HEADER */
+
 .site {
-  background: rgba(16,16,16,.98);
-  border-bottom: 1px solid var(--line);
+  background: var(--navy-dark);
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  position: relative;
+  z-index: 20;
+}
+
+.site .wrap {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
 }
 
 .brand {
   color: white;
-  letter-spacing: 1px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -.8px;
 }
 
 .brand span {
-  color: var(--gold);
+  color: #80b5f5;
 }
 
-.site nav a {
-  color: #dedbd4;
-  transition: color .2s;
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 23px;
 }
 
-.site nav a:hover {
-  color: var(--gold);
+nav a {
+  color: #e0e8f2;
+  font-size: 13px;
+  font-weight: 600;
+  transition: .2s;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  color: #83baff;
+}
+
+.nav-toggle {
+  display: none;
+  background: var(--blue);
+  border: 0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* HERO */
 
-.home-hero {
-  min-height: 680px;
+.hero {
+  min-height: 620px;
+  background:
+    linear-gradient(100deg, rgba(7,22,42,.94), rgba(14,45,82,.76)),
+    url('back.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
-  position: relative;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.65),rgba(0,0,0,.35)),
-    url('back.jpg') center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-}
-
-.home-hero .wrap {
-  width: 100%;
-  max-width: 1180px;
+  color: white;
 }
 
 .hero-content {
-  max-width: 720px;
-  padding: 100px 20px;
+  max-width: 750px;
+  padding: 110px 0;
 }
 
 .eyebrow {
-  color: var(--gold);
+  color: #8ec1ff;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  letter-spacing: 4px;
 }
 
-.home-hero h1 {
-  color: white;
-  font-size: clamp(42px,6vw,76px);
-  line-height: 1.08;
+.hero h1 {
+  font-size: clamp(40px,6vw,70px);
+  line-height: 1.1;
   letter-spacing: -2px;
-  margin: 25px 0;
+  margin: 22px 0;
 }
 
-.home-hero p {
-  color: #d0ccc4;
+.hero p {
+  color: #d6e2f0;
   font-size: 17px;
   line-height: 1.9;
-  max-width: 570px;
+  max-width: 620px;
 }
 
 .hero-actions {
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
-  margin-top: 35px;
+  gap: 14px;
+  margin-top: 32px;
 }
 
-.button-primary,
-.button-outline {
-  display: inline-block;
-  padding: 15px 27px;
-  text-decoration: none;
-  font-size: 13px;
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 25px;
+  border-radius: 5px;
   font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 13px;
   transition: .2s;
+  cursor: pointer;
 }
 
-.button-primary {
-  background: var(--gold);
-  color: #111;
-}
-
-.button-primary:hover {
-  background: #dfbd7d;
-}
-
-.button-outline {
-  border: 1px solid rgba(255,255,255,.45);
+.btn-primary {
+  background: #347ed1;
   color: white;
 }
 
-.button-outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+.btn-primary:hover {
+  background: #2463ad;
+  transform: translateY(-2px);
 }
 
-/* INTRO STRIP */
+.btn-outline {
+  color: white;
+  border: 1px solid rgba(255,255,255,.65);
+}
 
-.info-strip {
+.btn-outline:hover {
+  background: white;
+  color: var(--navy);
+}
+
+/* TRUST INFORMATION */
+
+.trust-section {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 35px 0;
+}
+
+.trust-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.trust-heading h2 {
+  font-size: 21px;
+  color: var(--navy);
+}
+
+.trust-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+}
+
+.trust-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  background: #f7f9fc;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+}
+
+.trust-icon {
+  width: 43px;
+  height: 43px;
+  min-width: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #e2edfa;
+  color: var(--blue);
+  font-size: 21px;
+}
+
+.trust-card strong {
+  display: block;
+  font-size: 13px;
+  color: var(--navy);
+}
+
+.trust-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* QUICK LINKS */
+
+.quick-section {
+  padding: 65px 0;
+  background: #edf3fa;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-heading .eyebrow {
+  color: var(--blue);
+}
+
+.section-heading h2 {
+  font-size: 32px;
+  color: var(--navy);
+  margin-top: 8px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.quick-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  border-bottom: 1px solid var(--line);
-  background: var(--dark);
+  gap: 22px;
 }
 
-.info-item {
-  padding: 30px 20px;
-  text-align: center;
-  border-right: 1px solid var(--line);
+.quick-card {
+  background: white;
+  padding: 32px 25px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transition: .2s;
 }
 
-.info-item:last-child {
-  border: 0;
+.quick-card:hover {
+  transform: translateY(-5px);
+  border-color: #a8c8ec;
 }
 
-.info-item strong {
-  display: block;
-  color: var(--gold);
-  font-size: 13px;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+.quick-card .icon {
+  width: 52px;
+  height: 52px;
+  background: var(--blue-light);
+  color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.info-item span {
+.quick-card h3 {
+  color: var(--navy);
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.quick-card p {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.quick-card .arrow {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
 }
 
 /* GENERAL SECTIONS */
 
-.home-section {
-  padding: 90px 20px;
+section.content-section {
+  padding: 75px 0;
 }
 
-.home-section.alt {
-  background: var(--dark);
+section.content-section.alt {
+  background: white;
 }
 
-.home-section .wrap {
-  max-width: 1180px;
+.section-title {
+  font-size: 30px;
+  color: var(--navy);
+  margin-bottom: 14px;
 }
 
-.section-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 35px;
-  flex-wrap: wrap;
-}
-
-.section-heading h2 {
-  color: white;
-  font-size: clamp(27px,4vw,40px);
-  margin: 12px 0 0;
-}
-
-.section-heading a {
-  color: var(--gold);
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.section-description {
+.section-text {
   color: var(--muted);
-  max-width: 650px;
   line-height: 1.9;
-  margin-top: 15px;
+  max-width: 750px;
 }
 
-/* STORE GRIDS */
-
-.grid[data-store],
-.grid[data-list] {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 22px;
+.section-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.grid[data-store] > *,
-.grid[data-list] > * {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-/* COMPANY SECTION */
+/* COMPANY PANEL */
 
 .company-panel {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  padding: 45px;
-  border-radius: 5px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 38px;
+  box-shadow: var(--shadow);
+}
+
+.company-panel h3 {
+  color: var(--navy);
+  font-size: 22px;
+  margin-bottom: 15px;
 }
 
 .company-panel p {
   color: var(--muted);
-  line-height: 2;
-  max-width: 800px;
+  line-height: 1.9;
+  margin-bottom: 12px;
 }
 
-.company-panel h3 {
-  color: var(--gold);
-  font-size: 23px;
-  margin-bottom: 20px;
+/* DYNAMIC GRIDS */
+
+.grid[data-store],
+.grid[data-list] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.grid[data-list] > *,
+.grid[data-store] > * {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.muted {
+  color: var(--muted);
 }
 
 /* COMPLIANCE */
 
-.compliance-panel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 35px;
-  align-items: center;
-}
-
-.compliance-card {
-  background: var(--panel);
+.compliance-box {
   padding: 35px;
-  border: 1px solid var(--line);
+  background: var(--navy);
+  border-radius: 9px;
+  color: white;
 }
 
-.compliance-card h3 {
-  color: var(--gold);
+.compliance-box h2 {
+  font-size: 29px;
   margin-bottom: 15px;
 }
 
-.compliance-card p {
-  color: var(--muted);
-  line-height: 1.8;
+.compliance-box p {
+  color: #d4e1f0;
+  line-height: 1.9;
 }
 
 /* SAFETY */
 
-.safety-panel {
-  padding: 45px;
-  border: 1px solid var(--line);
-  background: linear-gradient(120deg,#222,#151515);
+.safety-box {
+  background: #e9f1fa;
+  border-left: 5px solid var(--blue);
+  border-radius: 5px;
+  padding: 35px;
 }
 
-.safety-panel h2 {
-  color: white;
-  margin-bottom: 15px;
+.safety-box h2 {
+  color: var(--navy);
+  margin-bottom: 12px;
 }
 
-.safety-panel p {
+.safety-box p {
   color: var(--muted);
   line-height: 1.9;
 }
 
 /* CONTACT */
 
-.contact-panel {
-  background: var(--panel);
-  border: 1px solid var(--line);
+.contact-box {
+  background: white;
   padding: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
-.contact-panel p {
+.contact-box h2 {
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.contact-box p {
   color: var(--muted);
   line-height: 2;
 }
@@ -308,60 +483,117 @@ body {
 /* FOOTER */
 
 footer.site {
-  background: #090909;
-  border-top: 1px solid var(--line);
+  background: var(--navy-dark);
+  color: white;
   padding: 35px 0;
 }
 
+footer.site .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 footer.site p {
-  color: var(--muted);
+  color: #b8c7d8;
+  font-size: 13px;
+}
+
+footer.site ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 footer.site a {
-  color: #ccc;
+  color: #d5e2f1;
+  font-size: 12px;
 }
 
-.muted {
-  color: var(--muted);
+footer.site a:hover {
+  color: #83baff;
 }
 
 /* RESPONSIVE */
 
-@media(max-width:768px) {
-  .home-hero {
-    min-height: 590px;
-    background-position: 60% center;
+@media(max-width:950px) {
+  .nav-toggle {
+    display: block;
   }
 
-  .home-hero h1 {
-    font-size: 43px;
+  .site .wrap {
+    position: relative;
   }
 
-  .home-hero p {
-    font-size: 15px;
+  nav {
+    display: none;
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    background: var(--navy-dark);
+    padding: 20px;
+    border-top: 1px solid var(--border);
   }
 
-  .info-strip {
+  nav.open {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .quick-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width:600px) {
+  .hero {
+    min-height: 550px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .trust-grid,
+  .quick-grid {
     grid-template-columns: 1fr;
   }
 
-  .info-item {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
+  .hero-actions {
+    flex-direction: column;
   }
 
-  .compliance-panel {
-    grid-template-columns: 1fr;
+  .hero-actions .btn {
+    width: 100%;
   }
 
-  .home-section {
-    padding: 65px 18px;
+  .section-heading h2 {
+    font-size: 26px;
   }
 
   .company-panel,
-  .safety-panel,
-  .contact-panel {
-    padding: 25px;
+  .contact-box {
+    padding: 24px;
+  }
+
+  footer.site .wrap {
+    flex-direction: column;
   }
 }
 </style>
@@ -380,60 +612,52 @@ Liberty<span> Arms</span>
 
 <button class="nav-toggle"
 aria-expanded="false"
-aria-controls="nav">
+aria-controls="nav"
+type="button">
 Menu
 </button>
 
 <nav id="nav" aria-label="Main">
 <ul>
 <li><a href="index.html" aria-current="page">Home</a></li>
-<li><a href="shop.html">Shop</a></li>
 <li><a href="about.html">About</a></li>
-<li><a href="compliance.html">Compliance</a></li>
+<li><a href="compliance.html">Business Information</a></li>
 <li><a href="safety.html">Safety</a></li>
 <li><a href="faq.html">FAQ</a></li>
 <li><a href="contact.html">Contact</a></li>
-<li><a href="account.html">Account</a></li>
-<li><a href="cart.html">Cart <span data-cart-count></span></a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="terms.html">Terms</a></li>
 </ul>
 </nav>
 
 </div>
 </header>
 
-<div class="wrap">
-<div id="setup-notice" class="notice" hidden>
-Supabase is not configured. Please check your configuration.
-</div>
-</div>
-
 <main id="main">
 
 <!-- HERO -->
 
-<section class="home-hero">
+<section class="hero">
 <div class="wrap">
 <div class="hero-content">
 
 <span class="eyebrow">Welcome to Liberty Arms</span>
 
-<h1>
-Quality. Responsibility. Confidence.
-</h1>
+<h1>Professional Service. Clear Information. Responsible Standards.</h1>
 
 <p>
-Explore our online catalogue, learn about our business,
-and access important product, compliance and customer
-information in one place.
+Welcome to Liberty Arms. Find company information,
+published business documentation, customer assistance
+and responsible ownership resources.
 </p>
 
 <div class="hero-actions">
-<a class="button-primary" href="shop.html">
-Explore Catalogue
+<a class="btn btn-primary" href="about.html">
+Our Company
 </a>
 
-<a class="button-outline" href="about.html">
-Discover Our Company
+<a class="btn btn-outline" href="contact.html">
+Contact Support
 </a>
 </div>
 
@@ -441,161 +665,315 @@ Discover Our Company
 </div>
 </section>
 
-<!-- INFORMATION STRIP -->
+<!-- TRUST INFORMATION -->
 
-<div class="info-strip">
+<section class="trust-section">
+<div class="wrap">
 
-<div class="info-item">
-<strong>OUR CATALOGUE</strong>
-<span>Explore available products</span>
+<div class="trust-heading">
+<h2>Our Customer Commitments</h2>
+<p>Clear information and accessible customer resources.</p>
 </div>
 
-<div class="info-item">
-<strong>BUSINESS INFORMATION</strong>
-<span>Learn about our company</span>
+<div class="trust-grid">
+
+<div class="trust-card">
+<div class="trust-icon">✓</div>
+<div>
+<strong>Business Information</strong>
+<span>Published company details</span>
+</div>
 </div>
 
-<div class="info-item">
-<strong>CUSTOMER SUPPORT</strong>
-<span>Contact our team</span>
+<div class="trust-card">
+<div class="trust-icon">◆</div>
+<div>
+<strong>Customer Support</strong>
+<span>Direct enquiry channels</span>
+</div>
+</div>
+
+<div class="trust-card">
+<div class="trust-icon">▣</div>
+<div>
+<strong>Privacy Information</strong>
+<span>Information handling policies</span>
+</div>
+</div>
+
+<div class="trust-card">
+<div class="trust-icon">◎</div>
+<div>
+<strong>Safety Resources</strong>
+<span>Responsible ownership guidance</span>
+</div>
 </div>
 
 </div>
+</div>
+</section>
 
-<!-- CATEGORIES -->
+<!-- CLICKABLE INFORMATION CARDS -->
 
-<section class="home-section">
+<section class="quick-section">
 <div class="wrap">
 
 <div class="section-heading">
-<div>
-<span class="eyebrow">Explore</span>
-<h2>Shop by Category</h2>
-</div>
-<a href="shop.html">Explore all categories →</a>
+<span class="eyebrow">Explore Liberty Arms</span>
+<h2>How Can We Help You?</h2>
+<p>Access the information and resources you need.</p>
 </div>
 
-<p class="section-description">
-Browse our catalogue and explore available product categories.
-Product information and availability are displayed on their
-respective listing pages.
+<div class="quick-grid">
+
+<a class="quick-card" href="about.html">
+<div class="icon">⌂</div>
+<h3>Business Information</h3>
+<p>
+Learn about Liberty Arms, our company background
+and our business information.
 </p>
+<span class="arrow">Discover our company →</span>
+</a>
 
-<div class="grid" data-store="categories">
-<p class="muted">Loading categories...</p>
+<a class="quick-card" href="contact.html">
+<div class="icon">✉</div>
+<h3>Customer Support</h3>
+<p>
+Have a question? Get in touch with our team
+through our official contact page.
+</p>
+<span class="arrow">Contact our team →</span>
+</a>
+
+<a class="quick-card" href="safety.html">
+<div class="icon">✓</div>
+<h3>Our Resources</h3>
+<p>
+Access safety information, responsible ownership
+guidance and important website resources.
+</p>
+<span class="arrow">Explore resources →</span>
+</a>
+
 </div>
-
-</div>
-</section>
-
-<!-- FEATURED -->
-
-<section class="home-section alt">
-<div class="wrap">
-
-<div class="section-heading">
-<div>
-<span class="eyebrow">Our Selection</span>
-<h2>Featured Products</h2>
-</div>
-<a href="shop.html">View catalogue →</a>
-</div>
-
-<div class="grid"
-data-store="featured"
-data-limit="4">
-<p class="muted">Loading products...</p>
-</div>
-
 </div>
 </section>
 
-<!-- ABOUT -->
+<!-- COMPANY -->
 
-<section class="home-section">
+<section class="content-section">
 <div class="wrap">
 
-<div class="section-heading">
-<div>
-<span class="eyebrow">Who We Are</span>
-<h2>About Liberty Arms</h2>
-</div>
-</div>
+<h2 class="section-title">About Liberty Arms</h2>
 
 <div class="company-panel" data-page="home">
-<h3>Our Company</h3>
+
+<h3>Who We Are</h3>
 
 <p>
-Welcome to Liberty Arms. Our website provides access to
-our product catalogue, company information and customer
-support resources.
+Welcome to Liberty Arms. Our website provides company
+information, customer assistance and access to important
+business resources.
 </p>
 
 <p>
-We believe customers should have access to clear product
-information, transparent business practices and relevant
-compliance information when making purchasing decisions.
+We believe in transparent communication, accessible
+customer support and providing clear information
+about our business operations.
 </p>
 
-<a class="button-primary" href="about.html">
+<a class="btn btn-primary" href="about.html">
 Learn More
 </a>
-</div>
 
+</div>
 </div>
 </section>
 
 <!-- COMPLIANCE -->
 
-<section class="home-section alt">
+<section class="content-section alt">
 <div class="wrap">
 
-<div class="compliance-panel">
-
-<div>
-<span class="eyebrow">Business Standards</span>
-
-<h2>Transparency and Compliance</h2>
-
-<p class="section-description">
-Access our published business information and relevant
-regulatory documentation. Information is presented
-for customer reference and verification.
-</p>
-
-<a class="button-primary" href="compliance.html">
-View Business Information
-</a>
-</div>
-
-<div class="compliance-card">
-<h3>Compliance Information</h3>
+<div class="compliance-box">
+<h2>Business Information & Compliance</h2>
 
 <p>
-Review the available business credentials, licensing
-information and applicable policies published by
-Liberty Arms.
+Visit our business information page to review published
+documentation, applicable policies and relevant
+regulatory information.
 </p>
+
+<a class="btn btn-primary"
+href="compliance.html"
+style="margin-top:22px">
+View Business Information
+</a>
+
+</div>
 
 <div class="grid"
 data-list="compliance"
 data-limit="3">
-<p class="muted">Loading information...</p>
+<p class="muted">Loading published information...</p>
 </div>
 
-</div>
-
-</div>
 </div>
 </section>
 
 <!-- SAFETY -->
 
-<section class="home-section">
+<section class="content-section">
 <div class="wrap">
 
-<div class="safety-panel">
-<span class="eyebrow">Responsible Information</span>
+<div class="safety-box">
+<h2>Safety and Responsible Ownership</h2>
+
+<p>
+Responsible ownership involves understanding applicable
+laws, secure storage requirements and the importance
+of qualified safety training.
+</p>
+
+<a class="section-link" href="safety.html">
+Read our safety information →
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- ANNOUNCEMENTS -->
+
+<section class="content-section alt">
+<div class="wrap">
+
+<h2 class="section-title">Latest Announcements</h2>
+
+<div class="grid"
+data-list="announcements"
+data-limit="3">
+<p class="muted">Loading announcements...</p>
+</div>
+
+</div>
+</section>
+
+<!-- FAQ -->
+
+<section class="content-section">
+<div class="wrap">
+
+<h2 class="section-title">Frequently Asked Questions</h2>
+
+<div data-list="faqs" data-limit="4">
+<p class="muted">Loading questions...</p>
+</div>
+
+<a class="section-link" href="faq.html">
+View all FAQs →
+</a>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="content-section alt">
+<div class="wrap">
+
+<div class="contact-box">
+
+<h2>We're Here to Help</h2>
+
+<p>
+For general enquiries and customer assistance,
+please use our official contact page.
+</p>
+
+<p>
+<strong>Email:</strong>
+<span data-setting="contact_email">Contact through our enquiry page</span>
+<br>
+
+<strong>Phone:</strong>
+<span data-setting="contact_phone">Contact through our enquiry page</span>
+<br>
+
+<strong>Business Hours:</strong>
+<span data-setting="business_hours">Please contact our team</span>
+</p>
+
+<a class="btn btn-primary" href="contact.html">
+Contact Support
+</a>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer class="site">
+<div class="wrap">
+
+<p data-setting="footer_text">
+© 2026 Liberty Arms. All rights reserved.
+</p>
+
+<ul>
+<li><a href="privacy.html">Privacy Policy</a></li>
+<li><a href="terms.html">Terms</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="admin/login.html">Staff Sign-in</a></li>
+</ul>
+
+</div>
+</footer>
+
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/store.js"></script>
+
+<script>
+const menuButton = document.querySelector('.nav-toggle');
+const navigation = document.querySelector('#nav');
+
+menuButton.addEventListener('click', () => {
+  const isOpen = navigation.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+});
+
+navigation.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navigation.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+
+<!-- Tawk.to -->
+<script>
+var Tawk_API = Tawk_API || {};
+var Tawk_LoadStart = new Date();
+
+(function(){
+var s1 = document.createElement("script");
+var s0 = document.getElementsByTagName("script")[0];
+
+s1.async = true;
+s1.src = 'https://embed.tawk.to/6af09c4c8bd7e53c4b3871e2/default';
+s1.charset = 'UTF-8';
+s1.setAttribute('crossorigin','*');
+
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+</body>
+</html>
+mation</span>
 
 <h2>Safety and Responsibility</h2>
 
