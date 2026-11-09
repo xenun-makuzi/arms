@@ -61,7 +61,6 @@ async function product(el) {
   const form = p.stock_status === 'out_of_stock'
     ? '<p class="notice">This item is currently unavailable. <a href="contact.html">Contact us</a> to ask about restocking.</p>'
     : `<form id="reserve-form" class="card" novalidate><h2>Reserve or enquire</h2>
-<p class="muted">Reserving does not complete a sale. Eligibility checks and any transfer are completed in person or through a licensed dealer, as local law requires.</p>
 <label for="r_name">Name</label><input id="r_name" name="name" autocomplete="name" required maxlength="100"><span class="err" data-err="name"></span>
 <label for="r_email">Email</label><input id="r_email" name="email" type="email" autocomplete="email" required maxlength="254"><span class="err" data-err="email"></span>
 <label for="r_phone">Phone (optional)</label><input id="r_phone" name="phone" type="tel" autocomplete="tel" maxlength="30">
