@@ -1,13 +1,235 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Checkout | Liberty Arms</title><meta name="description" content="Place your order with Liberty Arms. Orders are reviewed before payment.">
-<meta property="og:title" content="Checkout | Liberty Arms"><meta property="og:description" content="Place your order with Liberty Arms. Orders are reviewed before payment."><meta property="og:type" content="website"><meta property="og:site_name" content="Liberty Arms">
-<link rel="stylesheet" href="assets/css/styles.css"></head>
-<body><a class="skip" href="#main">Skip to content</a>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout | Liberty Arms</title>
+<meta name="description" content="Place your order with Liberty Arms. Orders are reviewed before payment.">
+<meta property="og:title" content="Checkout | Liberty Arms">
+<meta property="og:description" content="Place your order with Liberty Arms. Orders are reviewed before payment.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Liberty Arms">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;color:#1e293b;background:#f8fafc;line-height:1.6}
+.skip{position:absolute;top:-100%;left:0;background:#1e293b;color:#fff;padding:0.5rem 1rem;z-index:1000;transition:top 0.2s}
+.skip:focus{top:0}
+.site{background:#0f172a;border-bottom:1px solid #1e293b;position:sticky;top:0;z-index:100}
+.site .wrap{max-width:1200px;margin:0 auto;padding:0.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.25rem;font-weight:700;color:#f1f5f9;text-decoration:none;letter-spacing:-0.02em}
+.brand span{color:#60a5fa}
+.nav-toggle{display:none;background:transparent;border:1px solid #334155;color:#cbd5e1;padding:0.4rem 0.8rem;border-radius:6px;cursor:pointer;font-size:0.9rem}
+.nav-toggle:hover{background:#1e293b}
+nav ul{list-style:none;display:flex;gap:0.25rem;margin:0;padding:0}
+nav ul li a{display:inline-block;padding:0.5rem 0.85rem;color:#94a3b8;text-decoration:none;font-size:0.9rem;font-weight:500;border-radius:6px;transition:all 0.15s}
+nav ul li a:hover{color:#f1f5f9;background:rgba(255,255,255,0.06)}
+nav ul li a[aria-current]{color:#60a5fa;background:rgba(96,165,250,0.1)}
+@media(max-width:768px){
+  .nav-toggle{display:block}
+  nav ul{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#0f172a;border-bottom:1px solid #1e293b;padding:0.5rem 0}
+  nav ul.show{display:flex}
+  nav ul li a{padding:0.75rem 1.5rem;border-radius:0}
+}
+.notice{background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:0.75rem 1rem;margin:1rem auto;max-width:1200px;color:#92400e;font-size:0.9rem}
+.notice code{background:#fef9e7;padding:0.1rem 0.3rem;border-radius:3px;font-size:0.85rem}
+main{padding:2rem 1.5rem}
+.wrap{max-width:1200px;margin:0 auto}
+.checkout-header{text-align:center;margin-bottom:2rem}
+.checkout-header h1{font-size:2rem;font-weight:800;color:#0f172a;margin-bottom:0.25rem}
+.checkout-header p{color:#64748b;font-size:0.95rem}
+.checkout-steps{display:flex;justify-content:center;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:#94a3b8;padding:0.4rem 0.8rem;border-radius:20px;background:#f1f5f9}
+.step.active{color:#1e293b;background:#dbeafe;font-weight:600}
+.step.complete{color:#059669;background:#d1fae5}
+.step-number{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;background:#e2e8f0;color:#64748b}
+.step.active .step-number{background:#2563eb;color:#fff}
+.step.complete .step-number{background:#059669;color:#fff}
+.checkout-layout{display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:start}
+@media(max-width:900px){.checkout-layout{grid-template-columns:1fr}}
+.checkout-form{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.checkout-form h2{font-size:1.1rem;font-weight:700;color:#0f172a;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid #e2e8f0}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:0.9rem;font-weight:600;color:#334155;margin-bottom:0.3rem}
+.form-group input,.form-group select{width:100%;padding:0.7rem 0.85rem;border:1px solid #cbd5e1;border-radius:8px;font-size:0.95rem;color:#1e293b;background:#fff;transition:border-color 0.15s}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.payment-methods{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0}
+.payment-option{border:2px solid #e2e8f0;border-radius:10px;padding:1rem;text-align:center;cursor:pointer;transition:all 0.15s}
+.payment-option:hover{border-color:#94a3b8}
+.payment-option.selected{border-color:#2563eb;background:#eff6ff}
+.payment-option .icon{font-size:1.5rem;margin-bottom:0.3rem}
+.payment-option .name{font-weight:600;font-size:0.9rem;color:#0f172a}
+.payment-option .desc{font-size:0.75rem;color:#64748b;margin-top:0.2rem}
+.crypto-details{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:1rem;margin-top:1rem}
+.crypto-details p{font-size:0.9rem;color:#166534;margin-bottom:0.5rem}
+.crypto-details code{display:block;background:#fff;border:1px solid #bbf7d0;padding:0.5rem;border-radius:6px;font-size:0.8rem;word-break:break-all;margin-bottom:0.5rem}
+.crypto-details .note{font-size:0.8rem;color:#4b5563}
+.place-order-btn{display:block;width:100%;padding:0.9rem;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;text-align:center;margin-top:1rem;transition:background 0.2s}
+.place-order-btn:hover{background:#1d4ed8}
+.checkout-summary{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:sticky;top:5rem}
+.checkout-summary h2{font-size:1.1rem;font-weight:700;color:#0f172a;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid #e2e8f0}
+.summary-item{display:flex;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid #f1f5f9}
+.summary-item:last-child{border-bottom:none}
+.summary-item-img{width:48px;height:48px;background:#f1f5f9;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:0.65rem;flex-shrink:0}
+.summary-item-info{flex:1}
+.summary-item-info h4{font-size:0.9rem;font-weight:600;color:#0f172a;margin-bottom:0.1rem}
+.summary-item-info .meta{font-size:0.8rem;color:#64748b}
+.summary-item-info .price{font-size:0.9rem;font-weight:600;color:#0f172a}
+.summary-row{display:flex;justify-content:space-between;padding:0.4rem 0;font-size:0.9rem;color:#334155}
+.summary-row.total{font-weight:700;color:#0f172a;font-size:1.05rem;border-top:2px solid #e2e8f0;margin-top:0.5rem;padding-top:0.75rem}
+.summary-row .fee{color:#dc2626;font-size:0.85rem}
+.secure-badge{display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-top:1rem;font-size:0.8rem;color:#64748b}
+.secure-badge svg{width:16px;height:16px;color:#059669}
+footer.site{background:#0f172a;color:#94a3b8;padding:1.5rem 0;margin-top:3rem}
+footer.site .wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem}
+footer.site p{margin:0;font-size:0.9rem}
+footer.site ul{list-style:none;display:flex;gap:0.75rem;margin:0;padding:0}
+footer.site ul li a{color:#94a3b8;text-decoration:none;font-size:0.85rem;transition:color 0.15s}
+footer.site ul li a:hover{color:#f1f5f9}
+@media(max-width:600px){
+  footer.site .wrap{flex-direction:column;text-align:center}
+  .checkout-header h1{font-size:1.6rem}
+  .payment-methods{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap"><a class="brand" href="index.html">Liberty<span> Arms</span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="compliance.html">Compliance</a></li><li><a href="safety.html">Safety</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="account.html">Account</a></li><li><a href="cart.html" aria-current="page">Cart<span data-cart-count></span></a></li></ul></nav></div></header>
+<nav id="nav" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="compliance.html">Compliance</a></li><li><a href="safety.html">Safety</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="account.html">Account</a></li><li><a href="cart.html">Cart<span data-cart-count></span></a></li></ul></nav></div></header>
 <div class="wrap"><div id="setup-notice" class="notice" hidden>Supabase is not configured yet. Edit <code>assets/js/config.js</code> (see README). Showing built-in content only.</div></div>
-<main id="main"><section><div class="wrap"><h1>Checkout</h1><div data-commerce="checkout"><p class="muted">Loading…</p></div></div></section></main>
-<footer class="site"><div class="wrap"><p data-setting="footer_text">© 2026 Liberty Arms. All rights reserved.</p>
+<main id="main">
+<section><div class="wrap">
+<div class="checkout-header">
+  <h1>Checkout</h1>
+  <p>Complete your order securely</p>
+</div>
+<div class="checkout-steps">
+  <div class="step complete"><span class="step-number">1</span> Cart</div>
+  <div class="step active"><span class="step-number">2</span> Details</div>
+  <div class="step"><span class="step-number">3</span> Confirmation</div>
+</div>
+<div class="checkout-layout">
+  <div class="checkout-form">
+    <h2>Shipping Information</h2>
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+      <label for="address">Street Address</label>
+      <input type="text" id="address" placeholder="Street address">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="City">
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <select id="state"><option>Select state</option><option>Texas</option><option>Florida</option><option>Arizona</option><option>Other</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" placeholder="ZIP code">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" placeholder="Phone number">
+      </div>
+    </div>
+    <h2 style="margin-top:1.5rem;">Payment Method</h2>
+    <div class="payment-methods">
+      <div class="payment-option selected">
+        <div class="icon">🪙</div>
+        <div class="name">Bitcoin</div>
+        <div class="desc">Anonymous · No fees</div>
+      </div>
+      <div class="payment-option">
+        <div class="icon">🔷</div>
+        <div class="name">Ethereum</div>
+        <div class="desc">Anonymous · No fees</div>
+      </div>
+      <div class="payment-option">
+        <div class="icon">💎</div>
+        <div class="name">Litecoin</div>
+        <div class="desc">Anonymous · Low fees</div>
+      </div>
+      <div class="payment-option">
+        <div class="icon">🏦</div>
+        <div class="name">Wire Transfer</div>
+        <div class="desc">Bank transfer · 1–3 days</div>
+      </div>
+    </div>
+    <div class="crypto-details">
+      <p><strong>🪙 Bitcoin Payment</strong></p>
+      <code>bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</code>
+      <p class="note">Send exact amount shown in the summary. Order is processed after 1 confirmation. You will receive a confirmation email within 24 hours.</p>
+    </div>
+    <button class="place-order-btn">Place Order — $1,347.00</button>
+  </div>
+  <div class="checkout-summary">
+    <h2>Order Summary</h2>
+    <div class="summary-item">
+      <div class="summary-item-img">G19</div>
+      <div class="summary-item-info">
+        <h4>Glock 19 Gen5 9mm</h4>
+        <div class="meta">Qty: 1</div>
+        <div class="price">$549.00</div>
+      </div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-item-img">M&P</div>
+      <div class="summary-item-info">
+        <h4>Smith &amp; Wesson M&amp;P Shield 9mm</h4>
+        <div class="meta">Qty: 1</div>
+        <div class="price">$399.00</div>
+      </div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-item-img">M500</div>
+      <div class="summary-item-info">
+        <h4>Mossberg 500 12 Gauge</h4>
+        <div class="meta">Qty: 1</div>
+        <div class="price">$349.00</div>
+      </div>
+    </div>
+    <div class="summary-row"><span>Subtotal</span><span>$1,297.00</span></div>
+    <div class="summary-row"><span>Shipping</span><span class="fee">$50.00</span></div>
+    <div class="summary-row"><span>Tax</span><span>Included</span></div>
+    <div class="summary-row total"><span>Total</span><span>$1,347.00</span></div>
+    <div class="secure-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      SSL encrypted · Your data is safe
+    </div>
+  </div>
+</div>
+</div></section></main>
+<footer class="site"><div class="wrap"><p>© 2026 Liberty Arms. All rights reserved.</p>
 <ul><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms and conditions</a></li><li><a href="admin/login.html">Staff sign-in</a></li></ul></div></footer>
-<script type="module" src="assets/js/main.js"></script><script type="module" src="assets/js/store.js"></script><script type="module" src="assets/js/commerce.js"></script></body></html>
+<script>
+document.querySelector('.nav-toggle')?.addEventListener('click', function(){
+  const nav = document.getElementById('nav');
+  const expanded = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', !expanded);
+  nav.querySelector('ul').classList.toggle('show');
+});
+// Payment option selection
+document.querySelectorAll('.payment-option').forEach(opt => {
+  opt.addEventListener('click', function(){
+    document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+</script>
+</body>
+</html>
